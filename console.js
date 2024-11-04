@@ -1,17 +1,11 @@
-var Arr = [];
-var num = 0;
-var console = el('console');
-function del(source){
-    Arr = [];
-    el(source).innerHTML = Arr;
-    num = 0;
-}
-function log(source,output){
-    Arr.push(`[${num+1}] ${output}`);
-    el(source).innerHTML += Arr[num] + "<br>";
-    el(source).scrollTop = el(source).scrollHeight;
-    num++;
-}
-function el(x){
-    return document.getElementById(x);
-}
+var console = {
+    arr: [],
+    num: 0,
+    log(source,output){
+        console.arr.push(`[${console.num+1}] ${output}`);
+        $(source).innerHTML += console.arr[console.num] + "<br>";
+        $(source).scrollTop = $(source).scrollHeight;
+        console.num++;
+    }
+};
+function $(x){return document.getElementById(x);}

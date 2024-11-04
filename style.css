@@ -1,0 +1,12 @@
+#consoleUI{
+        text-align:left;
+        overflow:scroll;
+        width:512px;
+        max-height:256px;
+        min-height:256px;
+        margin:left;
+        border:1px solid #000000;
+        padding:5px;
+        background:#FFFFFF;
+        color:#000000;
+}
