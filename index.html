@@ -1,18 +1,22 @@
 <!doctype html>
 <html>
 <head>
-    <script type='text/javascript' src = 'console.js'></script>
+    <title>jConsole</title>
+    <script type='text/javascript' src = 'jconsole.js'></script>
+    <script type = 'text/javascript'>
+    </script>
     <link rel = 'stylesheet' type = 'text/css' href = 'style.css'> 
 </head>
 <body>
-    <h1>Console</h1>
-    <button onclick = 'console.log()'>Log text</button>
-    <button onclick = 'console.del()'>Delete all text</button>
-    <button onclick = 'console.encode64()'>Encode to Base64</button>
-    <button onclick = 'console.decode64()'>Decode from Base64</button>
-    <button onclick = 'console.atou()'>Base64 to Unicode</button>
-    <button onclick = 'console.utoa()'>Unicode to Base64</button>
-    
+    <div style = 'font-family: verdana;'>
+    <h1>jConsole</h1>
+    <button style = 'font-family:verdana' id = 'settings' onclick = 'jConsole.switchinput()'>User input: off</button>
+    <button style = 'font-family:verdana' onclick = 'jConsole.log()'>Log text</button>
+    <button style = 'font-family:verdana' onclick = 'jConsole.del()'>Delete all text</button>
+    <button style = 'font-family:verdana' onclick = 'jConsole.encode64()'>Encode Base64</button>
+    <button style = 'font-family:verdana' onclick = 'jConsole.decode64()'>Decode Base64</button>
+    </div>
+    <pre id = 'input' contentEditable = 'true'></pre>
     <pre id = 'consoleUI'></pre>
 </body>
 </html>
