@@ -1,9 +1,9 @@
 #consoleUI{
         text-align:left;
         overflow:auto;
-        width:99%;
-        max-height:386px;
-        min-height:386px;
+        width:50%;
+        max-height:128px;
+        min-height:128px;
         margin:left;
         border:1px solid #000000;
         padding:5px;
@@ -13,9 +13,9 @@
 #input{
         text-align:left;
         overflow:auto;
-        width:99%;
-        max-height:64px;
-        min-height:64px;
+        width:50%;
+        max-height:32px;
+        min-height:32px;
         margin:left;
         border:1px solid #000000;
         padding:5px;
