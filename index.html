@@ -3,18 +3,20 @@
 <head>
     <title>jConsole</title>
     <script type='text/javascript' src = 'jconsole.js'></script>
-    <script type = 'text/javascript'>
+    <script>
     </script>
     <link rel = 'stylesheet' type = 'text/css' href = 'style.css'> 
 </head>
 <body>
     <div style = 'font-family: verdana;'>
     <h1>jConsole</h1>
-    <button style = 'font-family:verdana' id = 'settings' onclick = 'jConsole.switchinput()'>User input: off</button>
-    <button style = 'font-family:verdana' onclick = 'jConsole.log()'>Log text</button>
-    <button style = 'font-family:verdana' onclick = 'jConsole.del()'>Delete all text</button>
-    <button style = 'font-family:verdana' onclick = 'jConsole.encode64()'>Encode Base64</button>
-    <button style = 'font-family:verdana' onclick = 'jConsole.decode64()'>Decode Base64</button>
+    <button id = 'settings' onclick = 'jConsole.switchinput()'>User input: off</button>
+    <button onclick = 'jConsole.log()'>Log text</button>
+    <button onclick = 'jConsole.del()'>Delete all text</button>
+    <button onclick = 'jConsole.encode64()'>Encode Base64</button>
+    <button onclick = 'jConsole.decode64()'>Decode Base64</button>
+    <button onclick = 'jConsole.eval()'>Run JavaScript Code</button>
+    <button onclick = getData();>HTTP Request</button>
     </div>
     <textarea id="input"></textarea>
     <pre id = 'consoleUI'></pre>

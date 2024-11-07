@@ -47,6 +47,30 @@ var jConsole = {
             this.userInput = true;
             $('settings').innerHTML ='User input: on';
         }
+    },
+    eval() {
+            let monkey = eval($('input').value);
+            $('consoleUI').innerHTML += monkey + '<br>';
     }
 };
+async function getData() {
+    if(jConsole.userInput === false){
+        var url = "https://api.weather.gov/";
+    } else {
+        var url = $('input').value;
+    }
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+              $('consoleUI').innerHTML += (`Response status: ${response.status}`) + '<br>';
+            }
+        
+        const json = await response.json();
+
+              
+        $('consoleUI').innerHTML += (JSON.stringify(json, null, 4)) + '<br>';
+        } catch (error) {
+            $('consoleUI').innerHTML += (error.message) + '<br>';
+        }
+}
 function $(x){return document.getElementById(x);}
