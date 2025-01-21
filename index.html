@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang = 'en'>
+	<head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>jConsole</title>
+    	<link rel = 'stylesheet' type = 'text/css' href = 'codemirror.css'>
+	    <link rel = 'stylesheet' type = 'text/css' href = '../bootstrap.min.css'>
+        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>
+        <script src = '../bootstrap.min.js'></script> 
+        <script src = 'init.js'></script>
+    	<script src = 'codemirror.js'></script> 
+    	<script src = 'jsMode.js'></script>
+        <script src = 'script.js'></script>
+	</head>
+	<body>
+        <img src = 'logo.png'>
+    	<div>
+		    <button id = 'evalButton'>Run JavaScript Code</button>
+			<button id = 'clearButton'>Clear Console</button>
+			<input type = "file" id = "file">
+            <a href = '../index.html'><strong>Home</strong></a>
+		</div>
+		<div>
+    		<textarea id = 'input' class = 'hidden' autocorrect = 'false'></textarea>
+    		<textarea id = 'code'></textarea>
+            <br>
+			<pre id = 'consoleUI'></pre>
+		</div>
+	</body>
+</html>

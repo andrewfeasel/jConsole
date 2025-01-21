@@ -1,0 +1,10 @@
+#consoleUI{
+    overflow: auto;
+    width: 80%;
+    height: 256px;
+    background-color: white;
+    color: black;
+}
+.hidden{
+    display:none;
+}
