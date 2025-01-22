@@ -1,0 +1,27 @@
+{
+  "name": "jconsole",
+  "version": "1.0.0",
+  "description": "allows students to program JS code on Chromebooks",
+  "keywords": [
+    "js",
+    "unblock",
+    "programming",
+    "school",
+    "Chromebook"
+  ],
+  "homepage": "https://github.com/andrewfeasel/jConsole#readme",
+  "bugs": {
+    "url": "https://github.com/andrewfeasel/jConsole/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewfeasel/jConsole.git"
+  },
+  "license": "MIT",
+  "author": "Andrew Feasel",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
