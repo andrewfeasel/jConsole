@@ -30,14 +30,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     });
     myCodeMirror.on("change", (e) => {
-        $('input').value = myCodeMirror.getValue();
+      $('input').value = myCodeMirror.getValue();
     });
     evalButton.onclick = () => {
-        try {
-            eval($('input').value);
-        } catch (error) {
-            throw error;
-        }
+      eval($('input').value);
     };
     clearButton.onclick = () => {
         myCodeMirror.setValue('');
