@@ -1,65 +1,58 @@
 'use strict';
 const $ = x => document.getElementById(x);
-const log = x => {
-    const ui = $("consoleUI");
-    ui.innerHTML += `${x}<br>`;
-    ui.scrollTop = ui.scrollHeight;
+
+const jsConsole = {};
+jsConsole.ui = $("consoleUI");
+jsConsole.log = function (text) {
+  this.ui.textContent += `${text}\n`;
+  this.ui.scrollTop = ui.scrollHeight;
 };
-const clear = () => {
-    const ui = $("consoleUI");
-    ui.innerHTML = '';
-    ui.scrollTop = ui.scrollHeight;
-    $('input').value = '';
+jsConsole.clear = function(){
+  this.ui.innerHTML = "";
+  this.ui.scrollTop = this.ui.scrollHeight;
+  $("input").value = "";
 };
-window.addEventListener('error', (error) => {
-    log(`${error.name} ${error.message}`);
+
+const myCodeMirror = CodeMirror.fromTextArea($("code"), {
+  mode: 'javascript',
+  indentUnit: 2,
+  lineNumbers: true,
+  spellcheck: false,
+  autocorrect: false,
+  autocapitalize: false,
+  allowDropFileTypes: ['text/javascript','application/json']
 });
-document.addEventListener("DOMContentLoaded", (event) => {
-    const evalButton = $("evalButton");
-    const clearButton = $("clearButton");
-    const fileInput = $('file');
-    fileInput.accept = 'text/javascript, application/json';
-    const code = $('code');
-    window.addEventListener('offline', (event) => {
-        log('offline');
-    });
-    window.addEventListener('online', (event) => {
-        log('online');
-    });
-    const myCodeMirror = CodeMirror.fromTextArea(code, {
-        mode: 'javascript',
-        indentUnit: 4,
-        lineNumbers: true,
-        spellcheck: false,
-        autocorrect: false,
-        autocapitalize: false,
-        allowDropFileTypes: ['text/javascript','application/json']
-    });
-    myCodeMirror.setOption("extraKeys", {
-        Tab: function(cm) {
-            const spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
-            cm.replaceSelection(spaces);
-        }
-    });
-    myCodeMirror.on("change", (e) => {
-      $('input').value = myCodeMirror.getValue();
-    });
-    evalButton.onclick = () => {
-      eval($('input').value);
-    };
-    clearButton.onclick = () => {
-        myCodeMirror.setValue('');
-        clear();
-    };
-    fileInput.addEventListener("change", async () => {
-        let textContent;
-        for await (const file of fileInput.files) {
-            if (!file) {
-                break;
-            }
-            textContent += await file.text();
-        }
-        textContent = textContent.replace(/^undefined/,'');
-        myCodeMirror.setValue(textContent);
-    });
+
+myCodeMirror.setOption("extraKeys", {
+  Tab: function(cm) {
+    const spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+    cm.replaceSelection(spaces);
+  }
+});
+
+myCodeMirror.on("change", (e) => {
+  $('input').value = myCodeMirror.getValue();
+});
+
+$("evalButton").onclick = function() {
+  const script = document.createElement("script");
+  script.textContent = `console.log("Script executed immediately");`;
+  document.head.appendChild(script);
+};
+
+$("clearButton").onclick = () => {
+  myCodeMirror.setValue('');
+  jsConsole.clear();
+};
+
+const fileInput = $("file");
+fileInput.accept = "text/javascript, application/json";
+fileInput.addEventListener("change", async () => {
+  let textContent;
+  for await (const file of fileInput.files) {
+    if (!file) break;
+    textContent += await file.text();
+  }
+  textContent = textContent.replace(/^undefined/,'');
+  myCodeMirror.setValue(textContent);
 });
