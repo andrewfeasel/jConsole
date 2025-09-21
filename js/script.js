@@ -1,8 +1,7 @@
-'use strict';
-const $ = x => document.getElementById(x);
+const $id = x => document.getElementById(x);
 
 const jsConsole = {};
-jsConsole.ui = $("consoleUI");
+jsConsole.ui = $id("consoleUI");
 jsConsole.log = function (text) {
   this.ui.textContent += `${text}\n`;
   this.ui.scrollTop = ui.scrollHeight;
@@ -10,10 +9,10 @@ jsConsole.log = function (text) {
 jsConsole.clear = function(){
   this.ui.innerHTML = "";
   this.ui.scrollTop = this.ui.scrollHeight;
-  $("input").value = "";
+  $id("input").value = "";
 };
 
-const myCodeMirror = CodeMirror.fromTextArea($("code"), {
+const myCodeMirror = CodeMirror.fromTextArea($id("code"), {
   mode: 'javascript',
   indentUnit: 2,
   lineNumbers: true,
@@ -31,28 +30,27 @@ myCodeMirror.setOption("extraKeys", {
 });
 
 myCodeMirror.on("change", (e) => {
-  $('input').value = myCodeMirror.getValue();
+  $id('input').value = myCodeMirror.getValue();
 });
 
-$("evalButton").onclick = function() {
+$id("evalButton").onclick = function() {
   const script = document.createElement("script");
-  script.textContent = `console.log("Script executed immediately");`;
+  script.textContent = $id("input").value;
   document.head.appendChild(script);
 };
 
-$("clearButton").onclick = () => {
+$id("clearButton").onclick = () => {
   myCodeMirror.setValue('');
   jsConsole.clear();
 };
 
-const fileInput = $("file");
+const fileInput = $id("file");
 fileInput.accept = "text/javascript, application/json";
 fileInput.addEventListener("change", async () => {
   let textContent;
   for await (const file of fileInput.files) {
     if (!file) break;
-    textContent += await file.text();
+    textContent += await file.text() + "\n";
   }
-  textContent = textContent.replace(/^undefined/,'');
   myCodeMirror.setValue(textContent);
 });

@@ -1,26 +1,33 @@
 <!doctype html>
-<html lang = 'en'>
-	<head>
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>jConsole</title>
-    	<link rel = 'stylesheet' type = 'text/css' href = 'codemirror.css'>
-        <link rel = 'stylesheet' type = 'text/css' href = 'style.css'>
-    	<script src = 'codemirror.js'></script> 
-    	<script src = 'jsMode.js'></script>
-        <script src = 'script.js'></script>
-	</head>
-	<body>
-        <img src = 'logo.png'>
-    	<div>
-		    <button id = 'evalButton'>Run JavaScript Code</button>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+	<title>jsConsole</title>
+  <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">	
+
+	<script src="js/codemirror.js" type="module"></script> 
+  <script src="js/jsMode.js" type="module"></script>
+  <script src="js/script.js" type="module"></script>
+</head>
+<body>
+	<header>
+		<img src="assets/logo.png">
+	</header>
+	<main>
+  	<div>
+			<button id = 'evalButton'>Run JavaScript Code</button>
 			<button id = 'clearButton'>Clear Console</button>
-			<input type = "file" id = "file">
+			<input type="file" id="file">
 		</div>
 		<div>
-    		<textarea id = 'input' class = 'hidden' autocorrect = 'false'></textarea>
-    		<textarea id = 'code'></textarea>
-            <br>
-			<pre id = 'consoleUI'></pre>
+  		<textarea id = 'input' autocorrect = 'false' hidden></textarea>
+    	<textarea id = 'code'></textarea>
+    	<br>
+			<output id = 'consoleUI'></output>
 		</div>
-	</body>
+	</main>
+</body>
 </html>
