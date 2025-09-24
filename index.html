@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
 
-	<title>jsConsole</title>
+	<title>jConsole</title>
   <link rel="stylesheet" type="text/css" href="css/codemirror.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">	
 
@@ -18,15 +18,15 @@
 	</header>
 	<main>
   	<div>
-			<button id = 'evalButton'>Run JavaScript Code</button>
-			<button id = 'clearButton'>Clear Console</button>
+			<button id="evalButton">Execute Code</button>
+			<button id="clearButton">Clear</button>
 			<input type="file" id="file">
 		</div>
 		<div>
-  		<textarea id = 'input' autocorrect = 'false' hidden></textarea>
-    	<textarea id = 'code'></textarea>
+  		<textarea id="input" autocorrect="false" hidden></textarea>
+    	<textarea id="code"></textarea>
     	<br>
-			<output id = 'consoleUI'></output>
+			<pre id="consoleUI"></pre>
 		</div>
 	</main>
 </body>

@@ -1,18 +1,25 @@
+const console_log = console.log;
 const $id = x => document.getElementById(x);
 
-const jsConsole = {};
-jsConsole.ui = $id("consoleUI");
-jsConsole.log = function (text) {
+const input = $id("input");
+
+const jConsole = {};
+jConsole.ui = $id("consoleUI");
+jConsole.log = function (text) {
   this.ui.textContent += `${text}\n`;
-  this.ui.scrollTop = ui.scrollHeight;
+  this.ui.scrollTop = this.ui.scrollHeight;
 };
-jsConsole.clear = function(){
+jConsole.clear = function(){
   this.ui.innerHTML = "";
   this.ui.scrollTop = this.ui.scrollHeight;
-  $id("input").value = "";
+  input.value = "";
 };
 
-const myCodeMirror = CodeMirror.fromTextArea($id("code"), {
+console.log = function(text) {
+  jConsole.log(text);
+}
+
+const mirror = CodeMirror.fromTextArea($id("code"), {
   mode: 'javascript',
   indentUnit: 2,
   lineNumbers: true,
@@ -22,26 +29,26 @@ const myCodeMirror = CodeMirror.fromTextArea($id("code"), {
   allowDropFileTypes: ['text/javascript','application/json']
 });
 
-myCodeMirror.setOption("extraKeys", {
+mirror.setOption("extraKeys", {
   Tab: function(cm) {
     const spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
     cm.replaceSelection(spaces);
   }
 });
 
-myCodeMirror.on("change", (e) => {
-  $id('input').value = myCodeMirror.getValue();
+mirror.on("change", (e) => {
+  input.value = mirror.getValue();
 });
 
 $id("evalButton").onclick = function() {
   const script = document.createElement("script");
-  script.textContent = $id("input").value;
+  script.textContent = input.value;
   document.head.appendChild(script);
 };
 
 $id("clearButton").onclick = () => {
-  myCodeMirror.setValue('');
-  jsConsole.clear();
+  mirror.setValue("");
+  jConsole.clear();
 };
 
 const fileInput = $id("file");
@@ -52,5 +59,5 @@ fileInput.addEventListener("change", async () => {
     if (!file) break;
     textContent += await file.text() + "\n";
   }
-  myCodeMirror.setValue(textContent);
+  mirror.setValue(textContent);
 });
