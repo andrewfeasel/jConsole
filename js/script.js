@@ -1,19 +1,19 @@
-const console_log = console.log;
 const $id = x => document.getElementById(x);
 
 const input = $id("input");
 
-const jConsole = {};
-jConsole.ui = $id("consoleUI");
-jConsole.log = function (text) {
-  this.ui.textContent += `${text}\n`;
-  this.ui.scrollTop = this.ui.scrollHeight;
-};
-jConsole.clear = function(){
-  this.ui.innerHTML = "";
-  this.ui.scrollTop = this.ui.scrollHeight;
-  input.value = "";
-};
+const jConsole = {
+	ui: $id("consoleUI"),
+	log(text) {
+  	this.ui.textContent += `${text}\n`;
+  	this.ui.scrollTop = this.ui.scrollHeight;
+	},
+	clear() {
+  	this.ui.innerHTML = "";
+  	this.ui.scrollTop = this.ui.scrollHeight;
+  	input.value = "";
+	}
+}
 
 console.log = function(text) {
   jConsole.log(text);
